@@ -57,3 +57,30 @@ https://docs.docker.com/engine/security/security/
 [Subscribing to ubuntu-security-announce] https://lists.ubuntu.com/mailman/listinfo/ubuntu-security-announce
 
 [Let’s Encrypt is a new Certificate Authority] https://letsencrypt.org/
+### AppArmor
+#### Install AppArmor Profiles, Documentation, and Utilities
+```sudo apt-get install apparmor-utils apparmor-docs apparmor-profiles```
+#### AppArmor Profiles
+```cat /etc/apparmor.d/docker```
+#### List the Current Status of AppArmor
+```sudo apparmor_status```
+#### Additional Reading about AppArmor
+[Ubuntu AppArmor] https://help.ubuntu.com/14.04/serverguide/apparmor.html
+
+[Ubuntu AppArmor] https://help.ubuntu.com/community/AppArmor
+
+[AppArmor profile generator for Docker containers] https://github.com/jfrazelle/bane
+
+[Ubuntu AppArmor Profiles] https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/AppArmorProfiles
+
+[AppArmor security profiles for Docker] https://github.com/docker/docker/blob/master/docs/security/apparmor.md
+
+
+
+
+
+
+
+
+
+
