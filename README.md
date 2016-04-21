@@ -75,8 +75,14 @@ https://docs.docker.com/engine/security/security/
 
 [AppArmor security profiles for Docker] https://github.com/docker/docker/blob/master/docs/security/apparmor.md
 ### SSH
+#### Version of OpenSSH
+```
+ssh -V
+dpkg --list openssh\*
+```
 #### Make SSH a More Secure
 ```sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.org```
+[Service Name and Transport Protocol Port Number Registry]  https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?&page=1
 
 
 
