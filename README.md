@@ -111,11 +111,6 @@ ip a show eth0
 ifconfig eth0
 dig +short myip.opendns.com @resolver1.opendns.com
 ```
-
-
-
-
-
 #### Additional Reading about SSH
 [How SSH Works]  https://www.youtube.com/watch?v=zlv9dI-9g1U
 
@@ -124,3 +119,10 @@ dig +short myip.opendns.com @resolver1.opendns.com
 [Setting Up an SSH Key]  https://www.youtube.com/watch?v=-J9wUW5NhOQ
 
 [SSH and SCP: Howto, tips & tricks]  https://linuxacademy.com/blog/linux/ssh-and-scp-howto-tips-tricks/
+### Transport Layer Security (TLS)
+
+
+
+
+
+
