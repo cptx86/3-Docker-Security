@@ -87,11 +87,40 @@ dpkg --list openssh\*
 sudo vi /etc/ssh/sshd_config
 sudo service ssh restart
 ```
+#### Copy SSH Public Key to Remote Host
+```
+ssh-copy-id three@192.168.1.203
+ssh three@192.168.1.203
+ssh -vvv three@192.168.1.203
+```
+#### Make SSH a More Secure
+```
+sudo vi /etc/ssh/sshd_config
+sudo service ssh restart
+```
+#### Debug SSH
+```ssh -vvv <user-name>@<IP-Address>```
+#### Other Network Commands
+```
+nmap 192.168.1.202
+nc -zv 127.0.0.1 22
+sudo netstat -natp
+ip a
+ifconfig -a
+ip a show eth0
+ifconfig eth0
+dig +short myip.opendns.com @resolver1.opendns.com
+```
 
 
 
 
 
+#### Additional Reading about SSH
+[How SSH Works]  https://www.youtube.com/watch?v=zlv9dI-9g1U
 
+[SSH Tutorial for Linux]  http://support.suso.com/supki/SSH_Tutorial_for_Linux
 
+[Setting Up an SSH Key]  https://www.youtube.com/watch?v=-J9wUW5NhOQ
 
+[SSH and SCP: Howto, tips & tricks]  https://linuxacademy.com/blog/linux/ssh-and-scp-howto-tips-tricks/
