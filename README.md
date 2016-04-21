@@ -120,7 +120,17 @@ dig +short myip.opendns.com @resolver1.opendns.com
 
 [SSH and SCP: Howto, tips & tricks]  https://linuxacademy.com/blog/linux/ssh-and-scp-howto-tips-tricks/
 ### Transport Layer Security (TLS)
-
+[Transport Layer Protection Cheat Sheet]  https://www.owasp.org/index.php/Transport_Layer_Protection_Cheat_Sheet
+#### Installation of TLS
+```sudo apt-get install ssl-cert openssl ca-certificates```
+####Create Self-Signed Certificate Keys for Client and Server
+```
+mkdir -p $HOME/.docker
+chmod 700 $HOME/.docker
+cd $HOME/.docker
+pwd
+openssl genrsa -aes256 -out ca-key.pem 4096
+```
 
 
 
