@@ -83,6 +83,10 @@ dpkg --list openssh\*
 #### Make SSH a More Secure
 ```sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.org```
 [Service Name and Transport Protocol Port Number Registry]  https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?&page=1
+```
+sudo vi /etc/ssh/sshd_config
+sudo service ssh restart
+```
 
 
 
