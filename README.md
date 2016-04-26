@@ -157,7 +157,7 @@ openssl req -subj '/CN=client' -new -key key.pem -out client.csr
 echo extendedKeyUsage = clientAuth > extfile.txt
 openssl x509 -req -days 365 -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out cert.pem -extfile extfile.txt
 ```
-#### Remove the two certificate signing requests (CSR) and set file permissions.
+#### Remove the two certificate signing requests (CSR), set file permissions and move files.
 ```
 rm -v extfile.txt client.csr server-two.csr
 chmod -v 0400 ca-key.pem key.pem server-key.pem
@@ -167,7 +167,74 @@ sudo chmod 700 /etc/docker/certs.d/daemon
 sudo cp ca.pem /etc/docker/certs.d/daemon
 sudo cp server-two-cert.pem /etc/docker/certs.d/daemon
 sudo cp server-two-key.pem /etc/docker/certs.d/daemon
+cp -pv {ca,cert,key}.pem $HOME/.docker
 ```
+#### Modify Docker Daemon Startup Configuration File with TLS
+```
+docker daemon --help | grep -i tls
+sudo vi /etc/default/docker
+ps -ef | grep docker | grep -v grep
+docker version
+```
+#### Start Docker Daemon using TLS
+```
+sudo service docker restart
+ps -ef | grep docker | grep -v grep
+sudo cat /var/log/upstart/docker.log
+```
+#### Test Docker with TLS Enabled
+```
+docker version
+cd $HOME/.docker
+docker --tlsverify \
+--tlscacert=ca.pem \
+--tlscert=cert.pem \
+--tlskey=key.pem \
+-H=`hostname -f`:2376 version
+cd
+docker --tlsverify \
+--tlscacert=ca.pem \
+--tlscert=cert.pem \
+--tlskey=key.pem \
+-H=`hostname -f`:2376 version
+cd
+docker --tlsverify \
+-H=`hostname -f`:2376 version
+export DOCKER_TLS_VERIFY=1
+cd
+docker -H=`hostname -f`:2376 version
+export DOCKER_HOST=tcp://`hostname -f`:2376
+docker version
+vi $HOME/.bashrc
+env | grep -i docker
+sudo ufw status verbose
+```
+#### Additional Reading about TLS
+[Protect the Docker daemon socket]  https://docs.docker.com/engine/articles/https/
+
+[Transport Layer Protection Cheat Sheet]  https://www.owasp.org/index.php/Transport_Layer_Protection_Cheat_Sheet
+
+[The Business Case for TLS Certificate Enterprise Key Management of Web Site Certificates: Wrangling TLS Certificates on the Wild Web]  https://www.sans.org/reading-room/whitepapers/critical/business-case-tls-certificate-enterprise-key-management-web-site-certificates-wrangling-36392
+
+[SSL/TLS: What’s Under the Hood]  https://www.sans.org/reading-room/whitepapers/authentication/ssl-tls-hood-34297
+
+[Wikipedia: Transport Layer Security]  https://en.wikipedia.org/wiki/Transport_Layer_Security
+
+[Here is a script I found on github that states it will create and setup Docker for TLS: Create-docker-tls.sh]  https://gist.github.com/Stono/7e6fed13cfd79598eb15
+
+### UFW Firewall
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
