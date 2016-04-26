@@ -159,7 +159,7 @@ openssl x509 -req -days 365 -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem 
 ```
 #### Remove the two certificate signing requests (CSR) and set file permissions.
 ```
-rm -v client.csr server-two.csr
+rm -v extfile.txt client.csr server-two.csr
 chmod -v 0400 ca-key.pem key.pem server-key.pem
 chmod -v 0444 ca.pem server-cert.pem cert.pem
 sudo mkdir -p /etc/docker/certs.d/daemon
