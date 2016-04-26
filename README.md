@@ -123,14 +123,28 @@ dig +short myip.opendns.com @resolver1.opendns.com
 [Transport Layer Protection Cheat Sheet]  https://www.owasp.org/index.php/Transport_Layer_Protection_Cheat_Sheet
 #### Installation of TLS
 ```sudo apt-get install ssl-cert openssl ca-certificates```
-####Create Self-Signed Certificate Keys for Client and Server
+#### Create Self-Signed Certificate Keys for Client and Server
 ```
 mkdir -p $HOME/.docker
 chmod 700 $HOME/.docker
 cd $HOME/.docker
 pwd
-openssl genrsa -aes256 -out ca-key.pem 4096
+````
+#### Create Self-Signed Certification Authority (CA) private and public keys
 ```
+openssl genrsa -aes256 -out ca-key.pem 4096
+openssl req -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem
+```
+#### Create a server key and certificate signing request (CSR) for host two (two.cptx86.com).
+```
+openssl genrsa -out server-two-key.pem 4096
+openssl req -subj "/CN=two.cptx86.com" -sha256 -new -key server-two-key.pem -out server-two.csr
+```
+
+
+
+
+
 
 
 
