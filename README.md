@@ -140,6 +140,27 @@ openssl req -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem
 openssl genrsa -out server-two-key.pem 4096
 openssl req -subj "/CN=two.cptx86.com" -sha256 -new -key server-two-key.pem -out server-two.csr
 ```
+Sign the public key with the digital certificate authority (CA)
+```
+echo subjectAltName = IP:192.168.1.202,IP:127.0.0.1 > extfile.txt
+openssl x509 -req -days 365 -sha256 -in server-two.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out server-two-cert.pem -extfile extfile.txt
+```
+#### Create a client key and certificate signing request for client authentication
+```
+openssl genrsa -out key.pem 4096
+openssl req -subj '/CN=client' -new -key key.pem -out client.csr
+```
+#### Create an extensions config file to make the key suitable for client authentication.
+```
+echo extendedKeyUsage = clientAuth > extfile.txt
+openssl x509 -req -days 365 -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out cert.pem -extfile extfile.txt
+```
+#### Remove the two certificate signing requests (CSR) and set file permissions.
+```
+rm -v client.csr server.csr
+chmod -v 0400 ca-key.pem key.pem server-key.pem
+chmod -v 0444 ca.pem server-cert.pem cert.pem
+```
 
 
 
