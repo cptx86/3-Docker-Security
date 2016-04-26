@@ -237,14 +237,36 @@ sudo ufw allow 22/tcp
 sudo ufw allow 2375/tcp
 sudo ufw allow 2376/tcp
 ```
-
-
-
-
-
-
-
-
+#### Start UFW Logging
+``` sudo ufw logging on ```
+#### UFW Logging Level
+``` sudo ufw logging medium ```
+#### Start UFW and Check Status
+```
+sudo ufw enable
+sudo ufw status
+sudo ufw status verbose
+```
+#### Disable UFW and Check Status
+```
+sudo ufw disable
+sudo ufw reset
+sudo ufw status
+```
+#### Allow SSH for Subnet
+``` sudo ufw allow from 192.168.1.0/24 to any port 22 ```
+#### Allow Docker, Medium Logging, Allow HTTP
+```
+sudo ufw allow 2376/tcp
+sudo ufw logging medium
+sudo ufw allow 80
+```
+#### Start UFW and Check Numbered Status
+```
+sudo ufw enable
+sudo ufw status numbered
+```
+####
 
 
 
