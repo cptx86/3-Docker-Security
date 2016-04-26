@@ -266,7 +266,63 @@ sudo ufw allow 80
 sudo ufw enable
 sudo ufw status numbered
 ```
-####
+#### Delete UFW Rule 5 and Rule 3
+```
+sudo ufw delete 5
+sudo ufw delete 3
+```
+#### Check UFW Numbered Status
+``` sudo ufw status numbered ```
+#### Delete UFW Rule 2 and Rule 3
+```
+sudo ufw delete 3
+sudo ufw delete 2
+```
+#### Limit SSH Connections
+``` sudo ufw limit ssh/tcp ```
+#### Check UFW Verbose Status
+``` sudo ufw status verbose ```
+#### Check UFW Verbose Status
+``` sudo ufw status verbose ```
+#### UFW Application Profiles
+```
+sudo ufw app list
+cat /etc/ufw/applications.d/openssh-server
+```
+#### Quick UFW Setup Commands
+```
+sudo -i
+ufw limit from 192.168.1.0/24 to any port ssh
+ufw allow from 192.168.1.0/24 to any port 53
+ufw allow from 192.168.1.0/24 to any port http
+ufw allow from 192.168.1.0/24 to any port 111
+ufw allow from 192.168.1.0/24 to any port https
+ufw allow from 192.168.1.0/24 to any port nfs
+ufw allow from 192.168.1.0/24 to any port 2375
+ufw allow from 192.168.1.0/24 to any port 2376
+ufw allow from 192.168.1.0/24 to any port 3375
+ufw allow from 192.168.1.0/24 to any port 3376
+ufw allow from 192.168.1.0/24 to any port 4789
+ufw allow from 192.168.1.0/24 to any port 7946
+ufw logging medium
+ufw enable
+exit
+sudo ufw status verbose
+```
+#### Additional Reading about UFW
+[URL for TCP and UDP ports]  https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+
+[How To Set Up a Firewall with UFW on Ubuntu 14.04]  https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-14-04
+
+[Ubuntu documentation for UFW]  https://help.ubuntu.com/community/UFW
+
+[GUFW]  https://help.ubuntu.com/community/Gufw
+
+
+
+
+
+
 
 
 
