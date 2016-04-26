@@ -223,12 +223,20 @@ sudo ufw status verbose
 [Here is a script I found on github that states it will create and setup Docker for TLS: Create-docker-tls.sh]  https://gist.github.com/Stono/7e6fed13cfd79598eb15
 
 ### UFW Firewall
-
-
-
-
-
-
+#### UFW (Uncomplicated Firewall)
+```sudo ufw status```
+#### Installation of UFW
+``` sudo apt-get install ufw ```
+#### Configure UFW Control Policies
+``` sudo vi /etc/default/ufw ```
+#### Reload UFW Configuration Policies
+``` sudo ufw reload ```
+#### Allow SSH and Docker
+```
+sudo ufw allow 22/tcp
+sudo ufw allow 2375/tcp
+sudo ufw allow 2376/tcp
+```
 
 
 
